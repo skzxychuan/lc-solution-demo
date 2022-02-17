@@ -1,4 +1,4 @@
-package hot100.question40;
+package hot100.question47;
 
 import java.util.ArrayList;
 import java.util.HashSet;
