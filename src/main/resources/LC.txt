@@ -1,0 +1,185 @@
+双指针：
+	盛最多水的容器
+	一趟扫描删除链表的倒数第N个节点
+	三数之和
+	
+链表：
+	两数相加
+	#21合并两个有序链表
+	
+哈希表：
+	两数之和
+	
+排序：
+	三数之和
+	
+滑动窗口：
+	无重复字符的最长字串
+	
+二叉树：
+	对称二叉树
+	
+深度优先&广度优先：
+	#22 括号生成
+	
+回溯算法：
+	#39 组合总和
+	
+剪枝算法：
+	#22 括号生成
+	#39 组合总和
+	
+动态规划：
+	#5最长回文字串（这个的题解很适合状态规划的入门，非常详细经典）
+	最长上升子序列(面试网易大数据组件开发的时候最后就来了这道题，直接挂了，操)
+	#22 括号生成
+	#53 最大子序和
+	
+中心扩散：
+	#5最长回文字串
+	
+队列：
+	#17电话号码的字母组合
+
+栈：
+	#20有效括号
+
+递归：
+	#17电话号码的字母组合
+	#21合并两个有序链表
+	
+一般字符串处理：
+	#6.Z字形变换
+	
+求模运算：
+	#7. 整数反转
+	#8. 字符串转换整数 (atoi)  
+	
+	
+
+	
+
+工作日常问题：
+	1.2018-11-30	hbase合并服务挂掉，导致聚合任务阻塞在爬虫，进一步导致海纳阻塞
+	2.2018-12-05	聚合ES集群爆炸的问题，以及后续的解决措施(这个很值得参考，旭日亲自发的)，聚合集群当时是5台机器，30T数据
+	3.2018-12-12	人群库JobConfig太大，导致Mysql字段放不下，只能存在HDFS上。
+	4.2018-12-13 
+		嘉宏每天早上重启一次立方解决句柄问题（Too many open files; 2019-01-22的日志里有详细记录，既没有用单例，也没有用close）
+		通过spark streaming web UI和kafka队列查看消费是否有积压
+	5.2018-12-18 
+		全量库微博微信阵地是每天0点和12点入库一次。论坛不是，论坛大概每二三十分钟就会更新一次。 
+		聚合集群的索引大小建议每个分片比较优化的大小应该是30~50G 
+		grafana查看ES集群
+		关于total数据，etl数据，立方数据之间有差异：
+	6.2018-12-20
+		聚合dataSource个数限制的问题
+		立方的ds-app-ant端与ds-serv-ant端为了解耦，通过消息队列进行通信
+	7.2018-12-15 
+		HDFS目录空间不足会导致立方页面报出其他的错误（凡是会写HDFS的程序都要注意这一点，总有满的一天）
+		立方另存为流程
+	8.2018-12-26	立方表头的"_id"字段问题 2018-12-27也记录了这个
+	9.2019-01-02
+		聚合任务OOM(重要，2019-01-03也重点记录了解决这个问题的wiki,同时复制到了有道笔记/技术积累/java-2020-07-18)
+		立方上次超大文件500M excel里面有好几十个屏幕的“\",导致上传失败
+	10.2019-01-04
+		集群资源计算案例（值得看看）
+		-Djava.ext.dirs 与 -cp
+	11.2019-01-10	立方上传文件字段类型识别的问题（MAC地址被识别成数组）
+	12.2019-02-20	人群库任务dataSource分区之间的关系 TOP命令按内存排序
+	13.2019-02-22	销售起了一个1.6亿数据的立方下载任务
+	14.2019-02-26	redis句柄太高
+	15.2019-03-01	立方activeMq积压
+	16.2019-03-09	直连redis，redis主从切换就GG
+	17.2019-03-13	如果立方工作表加载数据特别慢(加载超时)，等很久(浏览器都会没响应卡死)，才把数据加载出来，并且日志没有明显报错，很有可能就是ES库里面有脏数据了，某个字段(比如内容)特别特别长
+	18.2019-06-19	子进程的日志重定向到父进程的问题
+工作技术积累：
+	2019-04-04
+		Maven shade插件打包jar包的时候，排除jar包里指定路径的文件
+		Spark程序卡在最后一个Task
+	2019-04-08 
+		springboot指定端口号的三种方式 
+		springboot内嵌tomcat
+		通过java -Djava.ext.dirs来解决spring boot中有压缩jar包而启动不了的问题
+	2019-04-11	springboot项目，写mysql数据库，timestamp或者datetime类型的字段都慢了13小时
+	2019-04-15
+		springboot Jpa下，mysql的ON UPDATE CURRENT_TIMESTAMP字段没有生效，不自动更新
+		项目报错(WARN)：No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value
+	2019-04-16
+		解决Unable to create new native thread
+		（重要）ES-Spark连接ES后，ES Client节点流量打满分析
+	2019-05-27	（重要）为什么Elasticsearch查询变得这么慢了？
+	2019-06-03	spark1.6与高版本的jackson-databind的jar包冲突：
+	2019-06-11
+		(重要)在ApacheSPark中，为什么RDD.Union不保存分区器？
+		(重要，结合上面聚合人群库任务的OOM一起看)什么是java OOM? 如何分析及解决OOM问题？
+	2019-06-13	spark中job stage task关系
+	2019-06-14	基于MAT分析OOM
+	2019-06-17	
+		nohup命令导致log文件过大处理办法:
+		linux命令之pwdx
+	2019-06-19 Spark异常处理——Shuffle FetchFailedException
+	2019-06-26
+		关于mysql的tinyint(1), tinyint(4), int(1), int(4),unsigned, zerofill等区别、作用介绍
+		Spring之使用@Value为静态变量赋值
+	2019-07-01
+		Java指令-Djava.ext.dirs的陷阱(重要)
+		JVM启动参数大全及默认值
+	2019-07-04	如何在SpringBoot JPA 中实现复杂的多表查询
+	2019-07-14
+		JAVA中几种获取资源文件的方式：
+		Maven中的<scope>provided</scope>什么意思？
+	2019-07-23
+		从线上美妆库ES拷贝10W条数据到测试环境给工厂自定义算子做测试（利用elasticdump工具）
+		bulk的默认大小限制，建议5~15M，默认不超过100M，ES配置文件里可配置
+		jar -cfm 把解压的jar包重新打包(注意后面两个是不能交换位置的，否则报错)：
+	2019-08-01	（重要）为了解决聚合任务JSON异常的问题，需要下载修改并编译elasticsearch-hadoop项目的源码：
+	2019-08-06
+		查看spark on yarn程序的执行器日志
+		常用的日志类
+	2019-08-08	（重要）ES嵌套agg并排序（嵌套桶排序）：
+	2019-08-13	（重要）SpringBoot系列之—瘦身部署
+	2019-08-14	redis-cli的单次查询 +  grep + xargs 命令实现批量删除
+	2019-08-20	gradle上传ES源码到公司nexus私服(包括class jar包和源码jar包)
+	2019-08-22	就算可变长参数没有接收任何值，它也不会是null，它会是一个长度为0的数组。
+	2019-08-25	立方工作表筛选器逻辑中的ARR()条件有什么用：
+	2019-09-02	spark推测执行(填坑)
+	2019-09-04	 TreeMultimap（guava）还是google中的工具，由于HashMap中键值是不排序的，所以如果你需要排序的Multimap的话就需要使用guava中的TreeMultimap
+	2019-09-30	各个系统下ping IP+端口的方法
+	2019-10-10	（重要）Spark：一个executor可以并行执行多个task，实际上一个executor是一个进程，task是executor里的一个线程。一个task至少要独占executor里的一个虚拟核心vcore
+				ds.coalesce #只能减少分区数，对平衡数据倾斜有效，而且是窄依赖所以速度块。
+				repartition调用了coalesce方法，并且传入的shuffle参数是true
+				Spark Repartition 使用
+	2019-10-12	
+		（重要）ES脚本字段中, doc[]、_source和_fields[]的区别：
+		（重要）立方工作表中TRP()条件的作用：
+	2019-10-18	集群的 RED 与 YELLOW
+	2019-10-31	Java Arrays.asList 返回的集合执行iterator.remove报java.lang.UnsupportedOperationException问题
+	2019-11-04	sort test.txt | uniq -c | sort -rn | cut -c 9-
+	2019-11-11	多模块项目, 在打tag的时候只上传部分模块的jar包到私服：
+	2019-11-29	（重要）java中静态代码执行顺序
+	2019-12-11	Maven依赖中的<optional>选项的作用：
+	2020-01-20	ES查询如果对脚本字段(脚本结果)进行agg聚合操作：（本质上都是将脚本写在agg里面，如果写在外面，是没有办法对脚本结果agg的。ES1.7的官网总结了可以使用脚本的地方）
+	2020-02-21 
+		立方中拖拽在线标签字段进行透视时触发的query:
+		透视之后点击透视表格中在线标签字段进而查询该在线标签字段时对应的query:
+	2020-03-22	springboot @Scheduled的坑，居然默认是单线程。springboot @Scheduled 并行（多线程）配置
+	2020-03-27	
+		（重要）一文带你彻底弄懂ES中的doc_values和fielddata，所以 ES2.x 之后，支持聚合的字段属性默认都使用doc_values，而不是fielddata。对于非text字段类型，doc_values默认情况下是打开的。
+		GSON或者FastJson的序列化失效，序列化后的结构缺了字段
+	2020-04-08	低版本ES的BUG：同索引不同type的同名字段的类型必须一致，否则报错：
+	2020-04-13	JMX监控的用处和用法
+	2020-04-16	ES AGG名字除了"_"或者"-"，不能有其他特殊符号：最后试了一下，其实是可以有其他符号的，比如$@之类的，只是">"确实不行。
+	2020-04-25
+		HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc....Possibly consider using a shorter
+		查看一个应用的线程数：
+		接口中同一个方法不写public，为什么在实现类中一定要写public呢？
+	2020-04-26
+		spark程序累加器的值只有在action阶段才会更新：
+		spark中cache和persist的区别
+			
+	
+	
+		
+	
+	
+	
