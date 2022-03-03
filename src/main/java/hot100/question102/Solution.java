@@ -7,6 +7,7 @@ import java.util.Queue;
 
 /**
  * #102 二叉树的层序遍历
+ * (这一题的最高赞题解总结了 BFS的使用场景 以及 BFS和DFS的区别，必看)
  */
 public class Solution {
 
